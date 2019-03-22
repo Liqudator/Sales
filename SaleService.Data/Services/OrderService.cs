@@ -75,5 +75,17 @@ namespace Sales.Data.Services
 
             return result;
         }
+
+        public void DeleteOlderOneYear()
+        {
+            Logger.Info("Удаление заказов старше 1 года.");
+            OrderManager.DeleteOlderOneYear();
+        }
+
+        public void DeleteOrderHistoryOlderOneYear()
+        {
+            Logger.Info("Удаление истории заказов старше 1 года.");
+            OrderManager.DeleteOrderHistory();
+        }
     }
 }

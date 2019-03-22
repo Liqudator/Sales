@@ -69,5 +69,7 @@
     <Build Include="dbo\Tables\Customers.sql" />
     <Build Include="dbo\Views\SelectionSellers.sql" />
     <Build Include="dbo\Stored Procedures\GetOrderByCity.sql" />
+    <Build Include="dbo\Stored Procedures\DeleteOrderOlderOneYear.sql" />
+    <Build Include="dbo\Stored Procedures\DeleteOrderHistoreOlderOneYear.sql" />
   </ItemGroup>
 </Project>

@@ -1,4 +1,4 @@
 ﻿create view SelectionSellers 
 as
-	select S.Id, S.SecondName, S.FirstName, S.MiddleName, S.Comission, 100. * Orders.Sum / S.Comission as SumComission
-	from Sellers as S JOIN Orders ON S.Id = Orders.SellerId
+	select Sellers.Id, Sellers.SecondName, Sellers.FirstName, Sellers.MiddleName, Sellers.Comission, 100. * Orders.Sum / Sellers.Comission as SumComission
+	from Sellers JOIN Orders ON Sellers.Id = Orders.SellerId

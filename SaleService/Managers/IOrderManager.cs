@@ -31,5 +31,15 @@ namespace Sales.Managers
         /// <param name="date">Дата.</param>
         /// <returns>Коллекция заказов.</returns>
         List<Order> GetByDate(DateTime date);
+
+        /// <summary>
+        /// Удалить заказ старше 1 года.
+        /// </summary>
+        void DeleteOlderOneYear();
+
+        /// <summary>
+        /// Удалить историю заказов.
+        /// </summary>
+        void DeleteOrderHistory();
     }
 }

@@ -26,12 +26,11 @@ namespace Sales.WebApi.Background
         {
             Schedule(() =>
             {
-                OrderService.GetAllByDate(DateTime.Now);
+                OrderService.DeleteOlderOneYear();
+                OrderService.DeleteOrderHistoryOlderOneYear();
             }).ToRunEvery(1).Days().At(0, 0);
 
             logger.Info("Регистрация и запуск задачи на ежедневное удаление заказов старше 1 года.");
         }
-
-
     }
 }

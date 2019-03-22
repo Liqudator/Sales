@@ -3,12 +3,14 @@
     [Description] NVARCHAR (250) NOT NULL,
     [Sum]         FLOAT (53)     NOT NULL,
     [OrderDate]   DATETIME       NOT NULL,
-    [CustomerId]  INT            NOT NULL,
-    [SellerId]    INT            NOT NULL,
+    [CustomerId]  INT            NULL,
+    [SellerId]    INT            NULL,
     PRIMARY KEY CLUSTERED ([Id] ASC),
     FOREIGN KEY ([CustomerId]) REFERENCES [dbo].[Customers] ([Id]),
     FOREIGN KEY ([SellerId]) REFERENCES [dbo].[Sellers] ([Id])
 );
+
+
 
 
 GO

@@ -58,5 +58,15 @@ namespace Sales.Services
         /// </summary>
         /// <param name="id">ИД заказа.</param>
         void DeleteOrder(int id);
+
+        /// <summary>
+        /// Удалить заказ старше года.
+        /// </summary>
+        void DeleteOlderOneYear();
+
+        /// <summary>
+        /// Удалить историю заказов старше года.
+        /// </summary>
+        void DeleteOrderHistoryOlderOneYear();
     }
 }

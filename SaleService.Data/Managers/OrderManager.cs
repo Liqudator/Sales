@@ -85,5 +85,21 @@ namespace Sales.Data.Managers
 
             return result;
         }
+
+        /// <summary>
+        /// Удалить запись старше 1 года.
+        /// </summary>
+        public void DeleteOlderOneYear()
+        {
+            OrderContext.Orders.FromSql("DeleteOrderOlderOneYear");
+        }
+
+        /// <summary>
+        /// Удалить историю заказа страше 1 года.
+        /// </summary>
+        public void DeleteOrderHistory()
+        {
+            OrderContext.Orders.FromSql("DeleteOrderHistoryOlderOneYear");
+        }
     }
 }
