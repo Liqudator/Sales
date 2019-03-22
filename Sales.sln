@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sales", "SaleService\Sales.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sales.Data", "SaleService.Data\Sales.Data.csproj", "{F592D7AD-6673-4501-A4CB-FE6907A2F321}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sale.Tests", "Sale.Tests\Sale.Tests.csproj", "{17612ABB-95DA-4399-AD8B-6C4027ADF625}"
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "SaleServiceDb", "SaleServiceDb\SaleServiceDb.sqlproj", "{F8BC0563-D64D-4D85-BCE5-9FABDA77A5E8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +29,12 @@ Global
 		{F592D7AD-6673-4501-A4CB-FE6907A2F321}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F592D7AD-6673-4501-A4CB-FE6907A2F321}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F592D7AD-6673-4501-A4CB-FE6907A2F321}.Release|Any CPU.Build.0 = Release|Any CPU
-		{17612ABB-95DA-4399-AD8B-6C4027ADF625}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{17612ABB-95DA-4399-AD8B-6C4027ADF625}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{17612ABB-95DA-4399-AD8B-6C4027ADF625}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{17612ABB-95DA-4399-AD8B-6C4027ADF625}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8BC0563-D64D-4D85-BCE5-9FABDA77A5E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8BC0563-D64D-4D85-BCE5-9FABDA77A5E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8BC0563-D64D-4D85-BCE5-9FABDA77A5E8}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{F8BC0563-D64D-4D85-BCE5-9FABDA77A5E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8BC0563-D64D-4D85-BCE5-9FABDA77A5E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8BC0563-D64D-4D85-BCE5-9FABDA77A5E8}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
