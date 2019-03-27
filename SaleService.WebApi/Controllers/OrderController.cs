@@ -60,7 +60,7 @@ namespace Sales.WebApi.Controllers
         /// <param name="date">Дата.</param>
         /// <returns>Коллекция заказов.</returns>
         [HttpGet("{date}")]
-        public async Task<List<Order>> GetByDate(DateTime date)
+        public async Task<List<Order>> GetByDate([FromBody] DateTime date)
         {
             return await Task.Run(() =>
                 MappingService.Map<List<Order>>(OrderService.GetAllByDate(date)));
@@ -77,7 +77,8 @@ namespace Sales.WebApi.Controllers
         /// <param name="sellerId">ИД заказчика.</param>
         /// <returns>Созданный заказ.</returns>
         [HttpPost]
-        public async Task<Order> CreateCustomer(Order order, int customerId, int sellerId)
+        public async Task<Order> CreateCustomer([FromBody] Order order, 
+            [FromBody] int customerId, [FromBody] int sellerId)
         {
             return await Task.Run(() =>
             {
@@ -94,7 +95,7 @@ namespace Sales.WebApi.Controllers
         /// <param name="id">ИД заказа.</param>
         /// <returns>Пусто.</returns>
         [HttpDelete("{id}")]
-        public async Task Delete(int id)
+        public async Task Delete([FromBody] int id)
         {
             await Task.Run(() => OrderService.DeleteOrder(id));
         }
@@ -102,25 +103,22 @@ namespace Sales.WebApi.Controllers
         /// <summary>
         /// Изменить заказ.
         /// </summary>
-        /// <param name="order">Заказ.</param>
         /// <param name="id">ИД заказа.</param>
+        /// <param name="order">Заказ.</param>
         /// <returns>Измененный заказ.</returns>
         [HttpPut("{id}")]
-        public async Task<Order> Update([FromBody] Order order, int id)
+        public async Task<Order> Update(int id, [FromBody] Order order)
         {
             return await Task.Run(() =>
             {
-                var temp = MappingService.Map<Order>(order);
-                var tempResult = MappingService.Map<Domain.Order>(OrderService.Get(id));
-                tempResult.Id = temp.Id;
-                tempResult.Description = temp.Description;
-                tempResult.OrderDate = temp.OrderDate;
-                tempResult.Sum = temp.Sum;
-                tempResult.CustomerId = temp.CustomerId;
-                tempResult.SellerId = temp.SellerId;
-                var result = MappingService.Map<Order>(OrderService.Update(tempResult, id));
+                if (id == order.Id)
+                {
+                    var temp = MappingService.Map<Domain.Order>(order);
+                    var result = MappingService.Map<Order>(OrderService.Update(temp));
+                    return result;
+                }
 
-                return result;
+                return order;
             });
         }
     }

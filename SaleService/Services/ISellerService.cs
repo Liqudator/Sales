@@ -32,9 +32,8 @@ namespace Sales.Services
         /// Изменить информацию о продавце.
         /// </summary>
         /// <param name="seller">Продавец.</param>
-        /// <param name="id">ИД продавца.</param>
         /// <returns>Измененный продавец.</returns>
-        Seller Update(Seller seller, int id);
+        Seller Update(Seller seller);
 
         /// <summary>
         /// Удалить продавца по его ИД.

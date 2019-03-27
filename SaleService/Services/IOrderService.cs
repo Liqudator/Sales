@@ -49,9 +49,8 @@ namespace Sales.Services
         /// Изменить информацию о заказе.
         /// </summary>
         /// <param name="order">Заказ.</param>
-        /// <param name="id">ИД заказа.</param>
         /// <returns>Измененный заказ.</returns>
-        Order Update(Order order, int id);
+        Order Update(Order order);
 
         /// <summary>
         /// Удалить заказ по его ИД.
@@ -62,7 +61,7 @@ namespace Sales.Services
         /// <summary>
         /// Удалить заказ старше года.
         /// </summary>
-        void DeleteOlderOneYear();
+        void DeleteOrderOlderOneYear();
 
         /// <summary>
         /// Удалить историю заказов старше года.

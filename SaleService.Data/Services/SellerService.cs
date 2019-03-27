@@ -48,10 +48,10 @@ namespace Sales.Data.Services
             return SellerManager.GetAll().ToList();
         }
 
-        public Seller Update(Seller seller, int id)
+        public Seller Update(Seller seller)
         {
             Logger.Info("Изменение продавца.");
-            var result = SellerManager.Update(seller, id);
+            var result = SellerManager.Update(seller);
             Logger.Info("Продавец изменен.");
 
             return result;

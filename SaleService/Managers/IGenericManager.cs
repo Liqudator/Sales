@@ -31,9 +31,8 @@ namespace Sales.Managers
         /// Изменить в БД информацию о сущности.
         /// </summary>
         /// <param name="entity">Экземпляр сущности.</param>
-        /// <param name="id">ИД сущности.</param>
         /// <returns>Измененная сущность.</returns>
-        TEntity Update(TEntity entity, int id);
+        TEntity Update(TEntity entity);
 
         /// <summary>
         /// Удалить из БД сущность по его ИД.

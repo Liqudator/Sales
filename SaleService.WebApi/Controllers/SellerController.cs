@@ -72,25 +72,22 @@ namespace Sales.WebApi.Controllers
         /// <summary>
         /// Изменить продавца.
         /// </summary>
-        /// <param name="seller">Продавец.</param>
         /// <param name="id">ИД продавца.</param>
+        /// <param name="seller">Продавец.</param>
         /// <returns>Измененный продавец.</returns>
         [HttpPut("{id}")]
-        public async Task<Seller> Update([FromBody] Seller seller, int id)
+        public async Task<Seller> Update(int id, [FromBody] Seller seller)
         {
             return await Task.Run(() =>
             {
-                var temp = MappingService.Map<Seller>(seller);
-                var tempResult = MappingService.Map<Domain.Seller>(SellerService.Get(id));
-                tempResult.Id = temp.Id;
-                tempResult.SecondName = temp.SecondName;
-                tempResult.FirstName = temp.FirstName;
-                tempResult.MiddleName = temp.MiddleName;
-                tempResult.City = temp.City;
-                tempResult.Comission = temp.Comission;
-                var result = MappingService.Map<Seller>(SellerService.Update(tempResult, id));
+                if (id == seller.Id)
+                {
+                    var temp = MappingService.Map<Domain.Seller>(seller);
+                    var result = MappingService.Map<Seller>(SellerService.Update(temp));
+                    return result;
+                }
 
-                return result;
+                return seller;
             });
         }
     }

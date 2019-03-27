@@ -48,10 +48,10 @@ namespace Sales.Data.Services
             return CustomerManager.GetAll().ToList();
         }
 
-        public Customer Update(Customer customer, int id)
+        public Customer Update(Customer customer)
         {
             Logger.Info("Изменение покупателя.");
-            var result = CustomerManager.Update(customer, id);
+            var result = CustomerManager.Update(customer);
             Logger.Info("Покупатель изменен.");
 
             return result;

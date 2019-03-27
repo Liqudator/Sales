@@ -35,7 +35,7 @@ namespace Sales.Managers
         /// <summary>
         /// Удалить заказ старше 1 года.
         /// </summary>
-        void DeleteOlderOneYear();
+        void DeleteOrderOlderOneYear();
 
         /// <summary>
         /// Удалить историю заказов.

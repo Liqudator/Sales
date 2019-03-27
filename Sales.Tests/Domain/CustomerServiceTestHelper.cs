@@ -1,7 +1,5 @@
 ﻿using Sales.Domain;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Sales.Tests.Domain
 {

@@ -89,7 +89,7 @@ namespace Sales.Data.Managers
         /// <summary>
         /// Удалить запись старше 1 года.
         /// </summary>
-        public void DeleteOlderOneYear()
+        public void DeleteOrderOlderOneYear()
         {
             OrderContext.Orders.FromSql("DeleteOrderOlderOneYear");
         }

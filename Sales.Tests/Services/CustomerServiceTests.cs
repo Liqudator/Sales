@@ -5,8 +5,6 @@ using Sales.Domain;
 using Sales.Data.Services;
 using Sales.Managers;
 using Sales.Tests.Domain;
-using System;
-using System.Linq;
 using System.Collections.Generic;
 
 namespace Sales.Tests.Services
@@ -18,7 +16,7 @@ namespace Sales.Tests.Services
     public class CustomerServiceTests : SalesTestBase
     {
         public CustomerService CustomerService { get; set; }
-        public Mock<ICustomerManager> CustomerManager { get; set; }
+        public Mock<ICustomerManager> CustomerManagerMock { get; set; }
 
         public List<Customer> Customers { get; set; }
 
@@ -37,8 +35,8 @@ namespace Sales.Tests.Services
         public override void RegisterTypes()
         {
             base.RegisterTypes();
-            CustomerManager = new Mock<ICustomerManager>();
-            ContainerManager.RegisterInstance(InstanceScope.Singleton, CustomerManager.Object, typeof(ICustomerManager));
+            CustomerManagerMock = new Mock<ICustomerManager>();
+            ContainerManager.RegisterInstance(InstanceScope.Singleton, CustomerManagerMock.Object, typeof(ICustomerManager));
         }
 
         [Test]
@@ -53,7 +51,7 @@ namespace Sales.Tests.Services
             CustomerService.Get(customer);
 
             // Then.
-            CustomerManager.Verify(e => e.Get(It.Is<int>(s => s == customer)), Times.Once);
+            CustomerManagerMock.Verify(e => e.Get(It.Is<int>(s => s == customer)), Times.Once);
         }
 
         [Test]
@@ -65,7 +63,38 @@ namespace Sales.Tests.Services
             CustomerService.GetAll();
 
             // Then.
-            CustomerManager.Verify(e => e.GetAll(), Times.Once);
+            CustomerManagerMock.Verify(e => e.GetAll(), Times.Once);
+        }
+
+        [Test]
+        [Description("Тест создания покупателя.")]
+        [Category("Unit")]
+        public void CustomerService_Create()
+        {
+            // Given.
+            var customer = Customers[0];
+
+            // When.
+            CustomerService.Create(customer);
+
+            // Then.
+            CustomerManagerMock.Verify(e => e.Create(It.Is<Customer>(c => c == customer)), Times.Once);
+        }
+
+        [Test]
+        [Description("Тест изменение покупателя.")]
+        [Category("Unit")]
+        public void CustomerService_Update()
+        {
+            // Given.
+            int id = 1;
+            var customer = Customers[id];
+
+            // When.
+            CustomerService.Update(customer);
+
+            // Then.
+            CustomerManagerMock.Verify(e => e.Update(It.Is<Customer>(c => c == customer)), Times.Once);
         }
     }
 }

@@ -3,7 +3,6 @@ using Midway.Common.Ioc.Attributes;
 using Midway.Common.Ioc.Domain;
 using Midway.Common.Logs.Domain;
 using Sales.Services;
-using System;
 
 namespace Sales.WebApi.Background
 {
@@ -26,9 +25,11 @@ namespace Sales.WebApi.Background
         {
             Schedule(() =>
             {
-                OrderService.DeleteOlderOneYear();
+                logger.Info("Удаление записи старше 1 года");
+                OrderService.DeleteOrderOlderOneYear();
+                logger.Info("Запись старше 1 года удален");
                 OrderService.DeleteOrderHistoryOlderOneYear();
-            }).ToRunEvery(1).Days().At(0, 0);
+            }).ToRunEvery(10).Seconds();
 
             logger.Info("Регистрация и запуск задачи на ежедневное удаление заказов старше 1 года.");
         }

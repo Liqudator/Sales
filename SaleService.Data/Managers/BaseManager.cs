@@ -28,6 +28,7 @@ namespace Sales.Data.Managers
         public TEntity Create(TEntity entity)
         {
             Context.Set<TEntity>().Add(entity);
+            Context.SaveChanges();
             return entity; 
         }
 
@@ -76,13 +77,12 @@ namespace Sales.Data.Managers
         /// Изменить сущность в БД.
         /// </summary>
         /// <param name="entity">Сущность.</param>
-        /// <param name="id">ИД сущности.</param>
         /// <returns>Измененная сущность.</returns>
-        public TEntity Update(TEntity entity, int id)
+        public TEntity Update(TEntity entity)
         {
-            var result = Context.Set<TEntity>().Update(entity);
+            Context.Set<TEntity>().Update(entity);
             Context.SaveChanges();
-            return result.Entity;
+            return entity;
         }
     }
 }

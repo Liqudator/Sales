@@ -58,10 +58,10 @@ namespace Sales.Data.Services
             return result;
         }
 
-        public Order Update(Order order, int id)
+        public Order Update(Order order)
         {
             Logger.Info("Изменение заказа.");
-            var result = OrderManager.Update(order, id);
+            var result = OrderManager.Update(order);
             Logger.Info("Заказ изменен.");
 
             return result;
@@ -76,10 +76,10 @@ namespace Sales.Data.Services
             return result;
         }
 
-        public void DeleteOlderOneYear()
+        public void DeleteOrderOlderOneYear()
         {
             Logger.Info("Удаление заказов старше 1 года.");
-            OrderManager.DeleteOlderOneYear();
+            OrderManager.DeleteOrderOlderOneYear();
         }
 
         public void DeleteOrderHistoryOlderOneYear()

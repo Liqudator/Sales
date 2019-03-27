@@ -21,6 +21,7 @@ namespace Sales.Data.Contexts
             optionsBuilder.UseSqlServer(@"Server=W971W10;Database=SaleServiceDb;Trusted_Connection=True;");
         }
 
+
         public DbSet<Customer> Customers { get; set; }
     }
 }

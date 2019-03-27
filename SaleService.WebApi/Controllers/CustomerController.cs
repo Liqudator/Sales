@@ -35,7 +35,7 @@ namespace Sales.WebApi.Controllers
         /// <param name="id">ИД покупателя.</param>
         /// <returns>Покупатель.</returns>
         [HttpGet("{id}")]
-        public async Task<Customer> Get(int id)
+        public async Task<Customer> Get([FromBody] int id)
         {
             return await Task.Run(() =>
                 MappingService.Map<Customer>(CustomerService.Get(id)));
@@ -47,7 +47,7 @@ namespace Sales.WebApi.Controllers
         /// <param name="customer">Покупатель.</param>
         /// <returns>Созданный покупатель.</returns>
         [HttpPost]
-        public async Task<Customer> CreateCustomer(Customer customer)
+        public async Task<Customer> CreateCustomer([FromBody] Customer customer)
         { 
             return await Task.Run(() =>
             {
@@ -63,8 +63,8 @@ namespace Sales.WebApi.Controllers
         /// </summary>
         /// <param name="id">ИД покупателя.</param>
         /// <returns>Пусто.</returns>
-        [HttpDelete("delete/{id}")]
-        public async Task Delete(int id)
+        [HttpDelete("{id}")]
+        public async Task Delete([FromBody] int id)
         {
             await Task.Run(() => CustomerService.Delete(id));
         }
@@ -72,24 +72,22 @@ namespace Sales.WebApi.Controllers
         /// <summary>
         /// Изменить покупателя.
         /// </summary>
-        /// <param name="customer">Покупатель.</param>
         /// <param name="id">ИД покупателя.</param>
+        /// <param name="customer">Покупатель.</param>
         /// <returns>Измененный покупатель.</returns>
         [HttpPut("{id}")]
-        public async Task<Customer> Update([FromBody] Customer customer, int id)
+        public async Task<Customer> Update(int id, [FromBody] Customer customer)
         {
             return await Task.Run(() =>
             {
-                var temp = MappingService.Map<Customer>(customer);
-                var tempResult = MappingService.Map<Domain.Customer>(CustomerService.Get(id));
-                tempResult.Id = temp.Id;
-                tempResult.SecondName = temp.SecondName;
-                tempResult.FirstName = temp.FirstName;
-                tempResult.MiddleName = temp.MiddleName;
-                tempResult.City = temp.City;
-                var result = MappingService.Map<Customer>(CustomerService.Update(tempResult, id));
+                if(id == customer.Id)
+                {
+                    var temp = MappingService.Map<Domain.Customer>(customer);
+                    var result = MappingService.Map<Customer>(CustomerService.Update(temp));
+                    return result;
+                }
 
-                return result;
+                return customer;
             });
         }
     }
